@@ -203,7 +203,7 @@
             </div>
           </template>
           <button v-if="showFirstDiv" style= "bottom:40%; transform: translate(-50%, -50%)" @click="trial.question !== null ? toggleDivs(): saveAndDisable()" :disabled="!hasRead">
-            {{ trial.question !== null ? 'Answer Question' : 'Next Text' }}
+            {{ trial.question !== null ? 'Next' : 'Next' }}
           </button>
 
           <div v-else style = "position:absolute; bottom:15%; text-align: center; width: 100%; min-width: -webkit-fill-available;" >
@@ -260,7 +260,7 @@
             </div>
           </template>
           <button v-if="showFirstDiv" style= "bottom:40%; transform: translate(-50%, -50%)" @click="trial.question !== null ? toggleDivs(): saveAndDisable()" :disabled="!hasRead">
-            {{ trial.question !== null ? 'Answer Question' : 'Next Text' }}
+            {{ trial.question !== null ? 'Next' : 'Next' }}
           </button>
 
           <div v-else style = "position:absolute; bottom:15%; text-align: center; width: 100%; min-width: -webkit-fill-available;" >
