@@ -527,7 +527,7 @@ const addEmptyColumns = function (trialData) {
   return trialData;
 };
 
-const flattenData = function (data) {
+const flattenData_original = function (data) {
   var trials = data.trials;
   delete data.trials;
 
@@ -555,4 +555,45 @@ const flattenData = function (data) {
     // Here the data is the general informatoin besides the trials.
     return merge(t, data);
   });
+};
+
+const flattenData = function (data) {
+  var trials = data.trials;
+  delete data.trials;
+
+  // Handle key name clashes
+  var sample_trial = trials[0];
+  for (var trial_key in sample_trial) {
+    if (Object.prototype.hasOwnProperty.call(sample_trial, trial_key)) {
+      if (Object.prototype.hasOwnProperty.call(data, trial_key)) {
+        var new_data_key = 'glb_' + trial_key;
+        data[new_data_key] = data[trial_key];
+        delete data[trial_key];
+      }
+    }
+  }
+
+  // Process and merge trials with the experiment data
+  var flattenedTrials = map(trials, function (t, index) {
+    for (const key in t) {
+      if (Array.isArray(t[key])) {
+        t[key] = t[key].join('|'); // Convert arrays to strings
+      }
+    }
+
+    // Merge with experiment data only for the first trial
+    if (index === 0) {
+      return merge(t, data);
+    } else {
+      // Create an object with null values for experiment data keys
+      const nullExpData = Object.keys(data).reduce((obj, key) => {
+        obj[key] = null;
+        return obj;
+      }, {});
+
+      return merge(t, nullExpData);
+    }
+  });
+
+  return flattenedTrials;
 };

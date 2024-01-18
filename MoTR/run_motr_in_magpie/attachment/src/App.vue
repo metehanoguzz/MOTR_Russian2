@@ -4,7 +4,7 @@
 <template>
   <Experiment title="Mouse tracking for Reading">
 
-    <Screen :title="'Welcome'" class="instructions" :validations="{
+    <Screen :title="'WelcomeTa'" class="instructions" :validations="{
         SubjectID: {
           minLength: $magpie.v.minLength(2)
         }
@@ -58,10 +58,13 @@
         <div style="padding-left: 30px">• I participate in this study voluntarily and consent that my personal data be used as described above.</div>
         <div style="padding-left: 30px">• I understand that I can stop participating at any moment.</div>
         <br>
-
-          <tr>
-          <td>Please enter your Worker ID to continue:&nbsp</td><td><input name="TurkID" type="text" class="obligatory" v-model="$magpie.measurements.SubjectID"/></td>
-          </tr>
+       
+        <br>
+        <div style="background-color: lightgrey; padding: 10px;">
+            <b> Demographic Information </b>
+        </div>
+        <br>
+          
          <p>Please answer the questions below, and then click the button to start the practice session.</p>
           <!-- <td>I currently live in a Russian-speaking country.</td>
           <td><input type="radio" id = "yes" value="Yes" v-model="$magpie.measurements.MouseType"> Yes</input> </td>
@@ -116,7 +119,10 @@
          </select>
             </tr>
           </div>
-          <div v-if="
+          <tr>
+          <td>Please enter your Worker ID to continue:&nbsp</td><td><input name="TurkID" type="text" class="obligatory" v-model="$magpie.measurements.SubjectID"/></td>
+          </tr>
+         <div v-if="
             $magpie.measurements.SubjectID&&
             !$magpie.validateMeasurements.SubjectID.$invalid 
             ">
@@ -142,6 +148,158 @@
  -->
       <p>In this study, you will read short texts and answer questions about them. However, unlike in normal reading, the texts will be blurred. In order to bring the text into focus move your mouse over it. Take as much time to read the text as you need in order to understand it. When you are done reading, answer the question at the bottom and click “next” to move on.</p>
     </InstructionScreen>
+
+    <Screen :title="'Demographics'" class="instructions" :validations="{
+        SubjectID: {
+          minLength: $magpie.v.minLength(2)
+        }
+      }">
+        <!-- <WelcomeScreen /> -->
+        <div style="width: 40em; margin: auto;">
+
+        <div style="background-color: lightgrey; padding: 10px;">
+            <b> PRACTICE TEXT </b>
+        </div>
+        <p>
+          Before we move on, we would like to ask you some questions about yourself.
+        <br><br>
+        </p>
+       
+        <br>
+        <div style="background-color: lightgrey; padding: 10px;">
+            <b> Demographic Information </b>
+        </div>
+        <br>
+          
+         <p>Please answer the questions below, and then click the button to start the practice session.</p>
+          <!-- <td>I currently live in a Russian-speaking country.</td>
+          <td><input type="radio" id = "yes" value="Yes" v-model="$magpie.measurements.MouseType"> Yes</input> </td>
+          <td><input type="radio" id = "no" value="No" v-model="$magpie.measurements.MouseType"> No</input></td>  
+          </tr> -->
+          <div>
+          <tr>
+          I am _____ years old. 
+          <input name="Age" type="number" inputmode="numeric" min = "18" class="obligatory" v-model="$magpie.measurements.Age"/><span class="validity"></span>
+          </tr>
+          </div>
+          
+          <tr>
+          I currently live in a Russian-speaking country. &nbsp
+          <select v-model="$magpie.measurements.RussianCountry"> 
+            <option disabled value=""></option>
+            <option>Yes</option>
+            <option>No</option>
+         </select>
+          </tr>
+          </div>
+          <div v-if="
+            $magpie.measurements.RussianCountry == 'No'
+            ">      
+            <td>How long have you lived in a non-Russian-speaking country? &nbsp </td><td><input name="RussianCountry2" type="text" class="obligatory" v-model="$magpie.measurements.RussianCountry2"/></td>
+          </div>
+          <div>
+          <tr>
+          I am using a _____. &nbsp
+          <select v-model="$magpie.measurements.MouseType"> 
+            <option disabled value=""></option>
+            <option>Mouse</option>
+            <option>Trackpad</option>
+            <option>Other</option> 
+         </select>
+         </tr>
+          </div>
+          <div v-if="
+            $magpie.measurements.MouseType == 'Other'
+            ">      
+            <td>If other, please specify: &nbsp &nbsp</td><td><input name="MouseType2" type="text" class="obligatory" v-model="$magpie.measurements.MouseType2"/></td>
+          </div>
+          
+          <div>
+            <tr>
+              My dominant hand is _____. &nbsp
+          <select v-model="$magpie.measurements.Handedness"> 
+            <option disabled value=""></option>
+            <option>Left</option>
+            <option>Right</option>
+            <option>Both</option>
+         </select>
+            </tr>
+          </div>
+          <tr>
+          <td>Please enter your Worker ID to continue:&nbsp</td><td><input name="TurkID" type="text" class="obligatory" v-model="$magpie.measurements.SubjectID"/></td>
+          </tr>
+         <div v-if="
+            $magpie.measurements.SubjectID&&
+            !$magpie.validateMeasurements.SubjectID.$invalid 
+            ">
+          <br> By clicking on the button below you consent to participating in this study: <br><br>
+          <br />
+          <button 
+            @click=" $magpie.addExpData({ SubjectId: $magpie.measurements.SubjectID}); $magpie.addExpData({MouseType: $magpie.measurements.MouseType}); 
+            $magpie.addExpData({MouseType2: $magpie.measurements.MouseType2}); $magpie.addExpData({RussianCountry: $magpie.measurements.RussianCountry}); 
+            $magpie.addExpData({RussianCountry2: $magpie.measurements.RussianCountry2}); $magpie.addExpData({Handedness: $magpie.measurements.Handedness}); $magpie.nextScreen()">
+
+            Start practice
+          </button>
+          
+          </div>
+        </Screen>
+
+    <template v-for="(trial, i) of practice_trials">
+      <Screen :key="i" class="main_screen" :progress="i / practice_trials.length">
+        <Slide>
+          <form>
+            <input type="hidden" class="item_id" :value="trial.item_id">
+            <input type="hidden" class="experiment_id" :value="trial.experiment_id">
+            <input type="hidden" class="condition_id" :value="trial.condition_id">
+          </form>
+          <div class="oval-cursor"></div>
+          <template>
+            <div v-if="showFirstDiv" class="readingText" @mousemove="moveCursor" @mouseleave="changeBack">
+              <template v-for="(word, index) of trial.text.split(' ')">
+                <span :key="index" :data-index="index" >
+                  {{ word }}
+                </span>
+              </template>
+            </div>
+            <div class="blurry-layer" style="opacity: 0.3; filter: blur(3.5px); transition: all 0.3s linear 0s;"> 
+              {{trial.text}}
+            </div>
+          </template>
+          <button v-if="showFirstDiv" style= "bottom:40%; transform: translate(-50%, -50%)" @click="trial.question !== null ? toggleDivs(): saveAndDisable()" :disabled="!hasRead">
+            {{ trial.question !== null ? 'Answer Question' : 'Next Text' }}
+          </button>
+
+          <div v-else style = "position:absolute; bottom:15%; text-align: center; width: 100%; min-width: -webkit-fill-available;" >
+            <template>
+              <form>
+                <!-- comprehension questions and the response options -->
+                <!-- <div>{{ trial.question ? trial.question.replace(/ ?["]+/g, '') : '' }}</div> -->
+                <div>{{ trial.question }}</div>
+                <template v-for='(word, index) of trial.response_options'>
+                  <input :id="'opt_'+index" type="radio" :value="word" name="opt" v-model="$magpie.measurements.response"/>{{ word }}<br/>
+                    <!-- <label :for="'opt_'+index"> {{ word }}&nbsp</label> -->
+                </template>
+              </form>
+            </template>
+          </div>
+          
+          <button v-if="$magpie.measurements.response" style="transform: translate(-50%, -50%)" @click="toggleDivs(); $magpie.saveAndNextScreen()">
+            Next
+          </button>
+        </Slide>
+      </Screen>
+    </template>
+    
+    <InstructionScreen :title="'End of practice session'">
+<!-- 
+      <p>Please use the "Fullscreen Mode" for the duration of the experiment:
+        <a href="javascript:void(0)" @click="turnOnFullScreen">Fullscreen Mode</a>
+      </p>
+ -->
+      <p>Practice session ended!. you will read short texts and answer questions about them. However, unlike in normal reading, the texts will be blurred. In order to bring the text into focus move your mouse over it. Take as much time to read the text as you need in order to understand it. When you are done reading, answer the question at the bottom and click “next” to move on.</p>
+    </InstructionScreen>
+
 
     <template v-for="(trial, i) of trials">
       <Screen :key="i" class="main_screen" :progress="i / trials.length">
@@ -197,7 +355,7 @@
 import localCoherence_list1 from '../trials/Russ_MoTR_List1.tsv';
 import localCoherence_list2 from '../trials/Russ_MoTR_List1.tsv';
 import localCoherence_list3 from '../trials/Russ_MoTR_List1.tsv';
-import localCoherence_practice from '../trials/Russ_MoTR_List1.tsv';
+import localCoherence_practice from '../trials/Russ_MoTR_Practice.tsv';
 
 import _ from 'lodash';
 import Vue from 'vue';
@@ -209,7 +367,8 @@ export default {
     const lists = [localCoherence_list1, localCoherence_list2, localCoherence_list3];
     const chosenItems = lists[Math.floor(Math.random() * lists.length)]; // randomly choose one of the lists
     const shuffledItems = _.shuffle(chosenItems); 
-    const trials = _.concat(localCoherence_practice, shuffledItems);
+    const practice_trials = localCoherence_practice ;
+    const trials = shuffledItems;
     // Create a new column in localCoherences called 'response_options'
     // that concatenates the word in response_true with the two words in response_distractors
     const updatedTrials = trials.map(trial => {
@@ -218,9 +377,16 @@ export default {
         response_options: _.shuffle(`${trial.response_true}|${trial.response_distractors}`.replace(/ ?["]+/g, "").split("|")),
       }
     });
+    const updatedPracticeTrials = practice_trials.map(trial => {
+      return {
+        ...trial,
+        response_options: _.shuffle(`${trial.response_true}|${trial.response_distractors}`.replace(/ ?["]+/g, "").split("|")),
+      }
+    });
     return {
       hasRead: false,
       trials: updatedTrials,
+      practice_trials: updatedPracticeTrials,
       currentIndex: null,
       showFirstDiv: true,
       // currentItem: null,
