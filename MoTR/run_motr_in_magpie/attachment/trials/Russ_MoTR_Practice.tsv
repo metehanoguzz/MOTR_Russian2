@@ -1,6 +1,6 @@
 part	item_id	condition_id	experiment_id	target_gender	gender_match	orig_item_number	case	animacy	R1	R2	R3	R4	R5	R6	text	question	response_true	response_distractors	wholest
-adjectives	1	a	practice	F	Match	0	0	0	В газете	отвратительная	статья	про поведение	россиян	за границей	Mete first practice sentence.	Mete first question?	Да	Нет	В газете*отвратительный*репортаж*про поведение*россиян*за границей.
+adjectives	1	a	practice	F	Match	0	0	0	В газете	отвратительная	статья	про поведение	россиян	за границей	Mete first practice sentence.	Mete  comprehension question item 1?	Да	Нет	В газете*отвратительный*репортаж*про поведение*россиян*за границей.
 num	2	d	practice	M	Match	0	0	0	По дорожке	бежали	два	пса	необычного	цвета	Mete second practice sentence..				На скамейке*сидела*футболистка*Зенита*в форменных*бутсах.
-adjectives	4	b	stim_adj	F	Mis	0	0	Inanim	У бабушки	старый	духовка	уже год	плохо	работает	Mete third practice question.	Mete third question? 	нет	да	У бабушки*старый*пылесос*уже год*плохо*работает.
-adjectives	5	c	stim_adj	F	Match	0	0	Inanim	На стене 	рваная	газета	давно	еле-еле	держится	На стене  рваная газета давно еле-еле держится.		нет	да	На стене*рваный*газета*давно*еле-еле*держится.
+adjectives	4	b	stim_adj	F	Mis	0	0	Inanim	У бабушки	старый	духовка	уже год	плохо	работает	Mete third practice question.	Mete comprehension question item 3? 	нет	да	У бабушки*старый*пылесос*уже год*плохо*работает.
+adjectives	5	c	stim_adj	F	Match	0	0	Inanim	На стене 	рваная	газета	давно	еле-еле	держится	Mete fourth practice question.		нет	да	На стене*рваный*газета*давно*еле-еле*держится.
 adjectives	6	d	stim_adj	M	Mis	0	0	Inanim	В комнате	странная	пакет	в углу	привлекает	внимание	Mete fifth practice sentence..		нет	да	В комнате*странная*сумка*в углу*привлекает*внимание.

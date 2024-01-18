@@ -60,65 +60,10 @@
         <br>
        
         <br>
-        <div style="background-color: lightgrey; padding: 10px;">
-            <b> Demographic Information </b>
-        </div>
-        <br>
-          
-         <p>Please answer the questions below, and then click the button to start the practice session.</p>
-          <!-- <td>I currently live in a Russian-speaking country.</td>
-          <td><input type="radio" id = "yes" value="Yes" v-model="$magpie.measurements.MouseType"> Yes</input> </td>
-          <td><input type="radio" id = "no" value="No" v-model="$magpie.measurements.MouseType"> No</input></td>  
-          </tr> -->
-          <div>
-          <tr>
-          I am _____ years old. 
-          <input name="Age" type="number" inputmode="numeric" min = "18" class="obligatory" v-model="$magpie.measurements.Age"/><span class="validity"></span>
-          </tr>
+      
           </div>
           
-          <tr>
-          I currently live in a Russian-speaking country. &nbsp
-          <select v-model="$magpie.measurements.RussianCountry"> 
-            <option disabled value=""></option>
-            <option>Yes</option>
-            <option>No</option>
-         </select>
-          </tr>
-          </div>
-          <div v-if="
-            $magpie.measurements.RussianCountry == 'No'
-            ">      
-            <td>How long have you lived in a non-Russian-speaking country? &nbsp </td><td><input name="RussianCountry2" type="text" class="obligatory" v-model="$magpie.measurements.RussianCountry2"/></td>
-          </div>
-          <div>
-          <tr>
-          I am using a _____. &nbsp
-          <select v-model="$magpie.measurements.MouseType"> 
-            <option disabled value=""></option>
-            <option>Mouse</option>
-            <option>Trackpad</option>
-            <option>Other</option> 
-         </select>
-         </tr>
-          </div>
-          <div v-if="
-            $magpie.measurements.MouseType == 'Other'
-            ">      
-            <td>If other, please specify: &nbsp &nbsp</td><td><input name="MouseType2" type="text" class="obligatory" v-model="$magpie.measurements.MouseType2"/></td>
-          </div>
           
-          <div>
-            <tr>
-              My dominant hand is _____. &nbsp
-          <select v-model="$magpie.measurements.Handedness"> 
-            <option disabled value=""></option>
-            <option>Left</option>
-            <option>Right</option>
-            <option>Both</option>
-         </select>
-            </tr>
-          </div>
           <tr>
           <td>Please enter your Worker ID to continue:&nbsp</td><td><input name="TurkID" type="text" class="obligatory" v-model="$magpie.measurements.SubjectID"/></td>
           </tr>
@@ -129,9 +74,7 @@
           <br> By clicking on the button below you consent to participating in this study: <br><br>
           <br />
           <button 
-            @click=" $magpie.addExpData({ SubjectId: $magpie.measurements.SubjectID}); $magpie.addExpData({MouseType: $magpie.measurements.MouseType}); 
-            $magpie.addExpData({MouseType2: $magpie.measurements.MouseType2}); $magpie.addExpData({RussianCountry: $magpie.measurements.RussianCountry}); 
-            $magpie.addExpData({RussianCountry2: $magpie.measurements.RussianCountry2}); $magpie.addExpData({Handedness: $magpie.measurements.Handedness}); $magpie.nextScreen()">
+            @click=" $magpie.addExpData({ SubjectId: $magpie.measurements.SubjectID}); $magpie.nextScreen()">
 
             Proceed
           </button>
@@ -139,39 +82,32 @@
           </div>
         </Screen>
 
-
-    <InstructionScreen :title="'Instruction'">
-<!-- 
-      <p>Please use the "Fullscreen Mode" for the duration of the experiment:
-        <a href="javascript:void(0)" @click="turnOnFullScreen">Fullscreen Mode</a>
-      </p>
- -->
-      <p>In this study, you will read short texts and answer questions about them. However, unlike in normal reading, the texts will be blurred. In order to bring the text into focus move your mouse over it. Take as much time to read the text as you need in order to understand it. When you are done reading, answer the question at the bottom and click “next” to move on.</p>
-    </InstructionScreen>
-
-    <Screen :title="'Demographics'" class="instructions" :validations="{
+    <Screen :title="'Instructions and demogprahic information'" class="instructions" :validations="{
         SubjectID: {
-          minLength: $magpie.v.minLength(2)
+          minLength: $magpie.v.minLength(1)
         }
       }">
         <!-- <WelcomeScreen /> -->
         <div style="width: 40em; margin: auto;">
 
         <div style="background-color: lightgrey; padding: 10px;">
-            <b> PRACTICE TEXT </b>
+            <b> Instructions </b>
         </div>
-        <p>
-          Before we move on, we would like to ask you some questions about yourself.
-        <br><br>
-        </p>
+        <p>In this study, you will read short texts and answer questions about them. However, unlike in normal reading, 
+          the texts will be blurred. In order to bring the text into focus move your mouse over it. Take as much time to 
+          read the text as you need in order to understand it. When you are done reading, answer the question at the bottom 
+          and click “next” to move on.</p>   
+        
+        <p>Before the main study starts, you will complete some practice trials so that you can get used to how the study works.</p> 
        
         <br>
         <div style="background-color: lightgrey; padding: 10px;">
             <b> Demographic Information </b>
         </div>
+        <p>
+          Before we move on, we would like to learn a little bit about you. Please answer the questions below, and then click the button to start the practice session.
         <br>
-          
-         <p>Please answer the questions below, and then click the button to start the practice session.</p>
+        </p>
           <!-- <td>I currently live in a Russian-speaking country.</td>
           <td><input type="radio" id = "yes" value="Yes" v-model="$magpie.measurements.MouseType"> Yes</input> </td>
           <td><input type="radio" id = "no" value="No" v-model="$magpie.measurements.MouseType"> No</input></td>  
@@ -225,17 +161,17 @@
          </select>
             </tr>
           </div>
-          <tr>
-          <td>Please enter your Worker ID to continue:&nbsp</td><td><input name="TurkID" type="text" class="obligatory" v-model="$magpie.measurements.SubjectID"/></td>
-          </tr>
          <div v-if="
-            $magpie.measurements.SubjectID&&
-            !$magpie.validateMeasurements.SubjectID.$invalid 
+            $magpie.measurements.Age&&
+            $magpie.measurements.MouseType&&
+            $magpie.measurements.RussianCountry&&
+            $magpie.measurements.Handedness
+            
             ">
-          <br> By clicking on the button below you consent to participating in this study: <br><br>
+          <br>
           <br />
           <button 
-            @click=" $magpie.addExpData({ SubjectId: $magpie.measurements.SubjectID}); $magpie.addExpData({MouseType: $magpie.measurements.MouseType}); 
+            @click=" $magpie.addExpData({MouseType: $magpie.measurements.Age}); $magpie.addExpData({MouseType: $magpie.measurements.MouseType}); 
             $magpie.addExpData({MouseType2: $magpie.measurements.MouseType2}); $magpie.addExpData({RussianCountry: $magpie.measurements.RussianCountry}); 
             $magpie.addExpData({RussianCountry2: $magpie.measurements.RussianCountry2}); $magpie.addExpData({Handedness: $magpie.measurements.Handedness}); $magpie.nextScreen()">
 
@@ -297,7 +233,8 @@
         <a href="javascript:void(0)" @click="turnOnFullScreen">Fullscreen Mode</a>
       </p>
  -->
-      <p>Practice session ended!. you will read short texts and answer questions about them. However, unlike in normal reading, the texts will be blurred. In order to bring the text into focus move your mouse over it. Take as much time to read the text as you need in order to understand it. When you are done reading, answer the question at the bottom and click “next” to move on.</p>
+      <p>Practice session ended! You can now start the main study. </p> 
+      <p>Please click the button below to start the study.</p>
     </InstructionScreen>
 
 
