@@ -290,9 +290,10 @@
 <script>
 // Load data from csv files as javascript arrays with objects
 import localCoherence_list1 from '../trials/Russ_MoTR_List1.tsv';
-import localCoherence_list2 from '../trials/Russ_MoTR_List1.tsv';
-import localCoherence_list3 from '../trials/Russ_MoTR_List1.tsv';
-import localCoherence_practice from '../trials/Russ_MoTR_Practice.tsv';
+import localCoherence_list2 from '../trials/Russ_MoTR_List2.tsv';
+import localCoherence_list3 from '../trials/Russ_MoTR_List3.tsv';
+import localCoherence_list4 from '../trials/Russ_MoTR_List4.tsv';
+import localCoherence_practice from '../trials/Russ_MoTR_List_Practice.tsv';
 
 import _ from 'lodash';
 import Vue from 'vue';
@@ -301,7 +302,7 @@ Vue.use(vBlur)
 export default {
   name: 'App',
   data() {
-    const lists = [localCoherence_list1, localCoherence_list2, localCoherence_list3];
+    const lists = [localCoherence_list1, localCoherence_list2, localCoherence_list3, localCoherence_list4];
     const chosenItems = lists[Math.floor(Math.random() * lists.length)]; // randomly choose one of the lists
     const shuffledItems = _.shuffle(chosenItems); 
     const practice_trials = localCoherence_practice ;
@@ -351,6 +352,7 @@ export default {
               Experiment: this.$el.querySelector(".experiment_id").value,
               Condition: this.$el.querySelector(".condition_id").value,
               ItemId: this.$el.querySelector(".item_id").value,
+              List_ID:this.$el.querySelector(".list_id").value,
               Index: this.currentIndex,
               Word: currentElement.innerHTML,
               mousePositionX: this.mousePosition.x,

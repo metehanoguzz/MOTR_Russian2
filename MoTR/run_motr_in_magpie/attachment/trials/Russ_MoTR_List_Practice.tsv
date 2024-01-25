@@ -1,0 +1,5 @@
+part	item_id	condition	experiment_id	target_gender	gender_match	orig_item_number	case	animacy	R1	R2	R3	R4	R5	R6	text	question	response_true	response_distractors
+adjectives	practice	practice	practice	F	Match	practice1	NA	NA	В газете	отвратительная	статья	про поведение	россиян	за границей	В газете отвратительная статья про поведение россиян за границей	Хорошо ли оценивает газета поведение россиян?	Нет	Да
+verbs	practice	practice	practice	M	Mis	practice2	NA	NA	На скамейке	сидела	футболист	Зенита	в форменных	бутсах	На скамейке сидела футболист Зенита в форменных бутсах			
+pred_adjectives	practice	practice	practice	F	Mis	practice3	NA	NA	Всегда 	огорчителен	неудача	в достижении	намеченных	планов	Всегда  огорчителен неудача в достижении намеченных планов			
+num	practice	practice	practice	M	Match	practice4	NA	NA	По дорожке	бежали	два	пса	необычного	цвета	По дорожке бежали два пса необычного цвета	Сколько было животных?	Два	Одно
