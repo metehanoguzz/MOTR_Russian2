@@ -206,15 +206,15 @@ zfuchs@usc.edu. С вопросами о ваших правах как учас
       </Screen>
     </template>
     
-    <InstructionScreen :title="'End of practice session'" style="justify-content: center; align-items: center; text-align: center;">
-<!-- 
-      <p>Please use the "Fullscreen Mode" for the duration of the experiment:
-        <a href="javascript:void(0)" @click="turnOnFullScreen">Fullscreen Mode</a>
-      </p>
- -->
+    <Screen :title="'Практика закончена'" class="instructions">
+
       <p>Вы закончили тренировку! Теперь можно перейти к основному исследованию.</p> 
       <p>Пожалуйста, нажмите кнопку ниже, чтобы начать.</p>
-    </InstructionScreen>
+      <button 
+            @click=" $magpie.nextScreen()">
+            Продолжить
+          </button>
+    </Screen>
 
 
     <template v-for="(trial, i) of trials">
