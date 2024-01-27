@@ -1,5 +1,5 @@
 export default {
-  experimentId: '3',
+  experimentId: '4',
   serverUrl: 'https://cui-motr-new.herokuapp.com/',
   socketUrl: 'wss://cui-motr-new.herokuapp.com/socket',
   // this will be used in prolific mode
