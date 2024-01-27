@@ -3,9 +3,9 @@
 
 <template>
   <!-- disabled translation -->
-  <Experiment title="Mouse tracking for Reading Russian" translate="no">
+  <Experiment title="Russian MoTR Study" translate="no">
     <!-- Why TA -->
-    <Screen :title="'Welcome'" class="instructions" :validations="{
+    <Screen :title="'Добро пожаловать'" class="instructions" :validations="{
         SubjectID: {
           minLength: $magpie.v.minLength(2)
         }
@@ -14,74 +14,55 @@
         <div style="width: 40em; margin: auto;">
 
           <div style="background-color: lightgrey; padding: 10px;">
-              <b> Information About this Study </b>
+              <b> Университет Южной Калифорнии: Информация</b>
           </div>
           <p>
-            We would like to ask you if you are willing to participate in our research project. Your participation is voluntary. Please read the text below carefully and ask the conducting person about anything you do not understand or would like to know.
+            Здравствуйте! Меня зовут Зузанна Фукс, я профессор Университета Южной Калифорнии в Лос-Анджелесе. 
           <br><br>
-            <b>What is investigated and how?</b> You are being asked to take part in a research study being done by Ethan Wilcox, a researcher at the Swiss Federal Institute of Technology. This study will help us learn about how people read. It will take you around 20 minutes to complete.
+          В круг моих исследований входит изучение того, как люди читают по-русски. Конкретное исследование, в котором, как я надеюсь, вы согласитесь поучаствовать, называется «Вопросы русского согласования».
           <br><br>
-            <b>Who can participate?</b> You can participate only if you are an adult native speaker of English.
+          Ваше участие в этом исследование носит добровольный характер, и в любой момент работы я буду рада вашим вопросам или уточнениям.
           <br><br>
-          <b>What am I supposed to do as a participant?</b> If you choose to be in the study, you will use the computer mouse to read sentences in English and answer questions about them.
+          Вы можете стать участником исследования, если вы отвечаете следующим критериям:
           <br><br>
-            <b>What are my rights during participation?</b> Your participation in this study is voluntary. If you choose to participate, you may change your mind and leave the study at any time by closing the web page without specifying reasons and without any disadvantages.
+          1.	Вы выросли в России и жили там первые 18 лет вашей жизни.<br>
+          2.	Если вы сейчас находитесь за пределами России, вы выехали оттуда после 2021 г.<br>
+          3.	Вам от 18 до 35 лет. 
+<br><br>
+          Если вы согласитесь принять участие в исследовании, вам нужно будет в течение 10-12 минут читать по-русски и отвечать на вопросы по чтению.
           <br><br>
-            <b>What risks and benefits can I expect?</b> There are no foreseeable risks for participating in this study.
+          По завершении теста вы получите компенсацию в сумме 4 долларов США на платформе Prolific.
           <br><br>
-            <b>Will I be compensated for participating?</b> If you participate you will be compensated for your time following the amount specified on prolific.co.
+          Результаты исследования будут докладываться на научных конференциях и включаться в журнальные публикации. Ваши личные данные нигде не будут указаны. Конфиденциальность ваших личных данных будет строго соблюдаться, и до публикации или докладов они будут анонимизированы. Анонимизированные данные могут в дальнейшем быть использованы и другими учеными.   
           <br><br>
-            <b>What data is collected from me and how is it used?</b> During this study, we will track the position of your mouse on screen. The data from this study may be presented at scientific conferences and published in scientific journals, as well as in online repositories. All data will remain anonymous. Members of the ETH Zurich Ethics Commission may access the original data for examination purposes. Strict confidentiality will be observed at any time.
-          <br><br>
-            <b> What are my rights to my personal data? </b> You can request information about the personal data collected from you at any time and without giving reasons. You can also request that it be rectified, handed over to you, barred for processing or erased. To do so, please contact the person indicated below.
-          <br><br>
-            <b>Who funds this study?</b> This study is funded by an ETH Postdoctoral Fellowship grant, awarded to Ethan Wilcox.
-          <br><br>
-            <b> How am I insured? </b> Although there are no foreseeable risks for participation, any adverse health effects that are directly caused by a study and can be demonstrated to be attributable to fault on the part of the project team or ETH Zurich are covered by ETH's liability insurance.
-          <br><br>
-            <b> Who reviewed this study?  </b> This study was examined by the ETH Zurich Ethics Commission as proposal EK 2023-N-03
-
-          <br><br>
-            <b> Complaints Office:</b> The secretariat of the ETH Zurich Ethics Committee is available to help you with complaints in connection with your participation. Contact: ethics@sl.ethz.ch or 0041 44 632 85 72.
-          <br><br>
-            <b> General Contact: </b> Ethan Gotlieb Wilcox, Department of Computer Science, ETH Zurich, OAS K.20, Binzmühlestrasse 13, 8050 Zürich, Switzerland, ethan.wilcox@inf.ethz.ch <br>
+          Если у вас есть вопросы по исследованию, пожалуйста, свяжитесь со мной по электронной почте:
+zfuchs@usc.edu. С вопросами о ваших правах как участника экспериментов, вы также можете обратиться в Комитет по этике Университета Южной Калифорнии: (323) 442-0114 (тел.), hrpp@usc.edu (эл. почта). 
+<br>
           </p>
 
           <br>
-          <div style="background-color: lightgrey; padding: 10px;">
-              <b> Consent Form </b>
-          </div>
-          <br>
-          I, the participant, confirm by clicking the button below: <br>
-          <div style="padding-left: 30px"> • I have read and understood the study information. My questions have been answered completely and to my satisfaction. </div>
-          <div style="padding-left: 30px">• I comply with the inclusion and exclusion criteria for participation described above. I am aware of the requirements and restrictions to be observed during the study. </div>
-          <div style="padding-left: 30px">• I have had enough time to decide about my participation. </div>
-          <div style="padding-left: 30px">• I participate in this study voluntarily and consent that my personal data be used as described above.</div>
-          <div style="padding-left: 30px">• I understand that I can stop participating at any moment.</div>
-          <br>
-        
-          <br>
+
       
         </div>
         <tr>
           <!-- Explain TurkID -->
-          <td>Please enter your prolific ID to continue:&nbsp</td><td><input name="TurkID" type="text" class="obligatory" v-model="$magpie.measurements.SubjectID"/></td>
+          <td>Пожалуйста, введите свой идентификатор работника, чтобы продолжить:&nbsp</td><td><input name="TurkID" type="text" class="obligatory" v-model="$magpie.measurements.SubjectID"/></td>
         </tr>
         <div v-if="
             $magpie.measurements.SubjectID&&
             !$magpie.validateMeasurements.SubjectID.$invalid 
             ">
-          <br> By clicking on the button below you consent to participating in this study: <br><br>
+          <br> Нажимая кнопку ниже, вы соглашаетесь на участие в этом исследовании: <br><br>
           <br />
           <button 
             @click=" $magpie.addExpData({ SubjectId: $magpie.measurements.SubjectID}); $magpie.nextScreen()">
-            Proceed
+            Продолжить
           </button>
           
         </div>
     </Screen>
 
-    <Screen :title="'Instructions and demogprahic information'" class="instructions" :validations="{
+    <Screen :title="'Инструкции и демографическая информация'" class="instructions" :validations="{
         SubjectID: {
           minLength: $magpie.v.minLength(1)
         }
@@ -90,21 +71,20 @@
         <div style="width: 40em; margin: auto;">
 
         <div style="background-color: lightgrey; padding: 10px;">
-            <b> Instructions </b>
+            <b>Инструкции</b>
         </div>
-        <p>In this study, you will read short texts and answer questions about them. However, unlike in normal reading, 
-          the texts will be blurred. In order to bring the text into focus move your mouse over it. Take as much time to 
-          read the text as you need in order to understand it. When you are done reading, answer the question at the bottom 
-          and click “next” to move on.</p>   
+        <p>В этом исследовании вы будете читать короткие тексты и отвечать на вопросы по ним. Однако, в отличие от обычного чтения, тексты будут размыты. 
+          Чтобы сделать текст четким, наведите на него курсор мышки. Уделите чтению текста столько времени, сколько вам необходимо для его понимания. 
+          Когда вы закончите читать текст, ответьте на вопрос, расположенный внизу экрана, и нажмите «Далее», чтобы продолжить.</p>   
         
-        <p>Before the main study starts, you will complete some practice trials so that you can get used to how the study works.</p> 
+        <p>Чтобы привыкнуть к тому, как устроено исследование, перед началом основного исследования вы выполните несколько тренировочных заданий.</p> 
        
         <br>
         <div style="background-color: lightgrey; padding: 10px;">
-            <b> Demographic Information </b>
+            <b> Демографическая игформация </b>
         </div>
         <p>
-          Before we move on, we would like to learn a little bit about you. Please answer the questions below, and then click the button to start the practice session.
+          Прежде чем начать, мы хотели бы немного узнать о вас. Пожалуйста, ответьте на вопросы ниже, а затем нажмите кнопку, чтобы начать тренировку.
         <br>
         </p>
           <!-- <td>I currently live in a Russian-speaking country.</td>
@@ -113,50 +93,50 @@
           </tr> -->
           <div>
           <tr>
-          I am _____ years old. 
+          Мне _____ лет.  
           <input name="Age" type="number" inputmode="numeric" min = "18" class="obligatory" v-model="$magpie.measurements.Age"/><span class="validity"></span>
           </tr>
           </div>
           
           <tr>
-          I currently live in a Russian-speaking country. &nbsp
+            В данный момент я живу в русскоговорящей стране. &nbsp
           <select v-model="$magpie.measurements.RussianCountry"> 
             <option disabled value=""></option>
-            <option>Yes</option>
-            <option>No</option>
+            <option>Да</option>
+            <option>Нет</option>
          </select>
           </tr>
           </div>
           <div v-if="
-            $magpie.measurements.RussianCountry == 'No'
+            $magpie.measurements.RussianCountry == 'Нет'
             ">      
-            <td>How long have you lived in a non-Russian-speaking country? &nbsp </td><td><input name="RussianCountry2" type="text" class="obligatory" v-model="$magpie.measurements.RussianCountry2"/></td>
+            <td>Как долго вы проживаете в нерусскоязычной стране? &nbsp </td><td><input name="RussianCountry2" type="text" class="obligatory" v-model="$magpie.measurements.RussianCountry2"/></td>
           </div>
           <div>
           <tr>
-          I am using a _____. &nbsp
+            Я использую _____. &nbsp
           <select v-model="$magpie.measurements.MouseType"> 
             <option disabled value=""></option>
-            <option>Mouse</option>
-            <option>Trackpad</option>
-            <option>Other</option> 
+            <option>Компьютерную мышку</option>
+            <option>Трекпад</option>
+            <option>другое</option> 
          </select>
          </tr>
           </div>
           <div v-if="
-            $magpie.measurements.MouseType == 'Other'
+            $magpie.measurements.MouseType == 'другое'
             ">      
-            <td>If other, please specify: &nbsp &nbsp</td><td><input name="MouseType2" type="text" class="obligatory" v-model="$magpie.measurements.MouseType2"/></td>
+            <td>Если вы указали другое, пожалуйста уточните: &nbsp &nbsp</td><td><input name="MouseType2" type="text" class="obligatory" v-model="$magpie.measurements.MouseType2"/></td>
           </div>
           
           <div>
             <tr>
-              My dominant hand is _____. &nbsp
+              Я _____. &nbsp
           <select v-model="$magpie.measurements.Handedness"> 
             <option disabled value=""></option>
-            <option>Left</option>
-            <option>Right</option>
-            <option>Both</option>
+            <option>Левша</option>
+            <option>Правша</option>
+            <option>Амбидекстр</option>
          </select>
             </tr>
           </div>
@@ -173,7 +153,7 @@
             $magpie.addExpData({MouseType2: $magpie.measurements.MouseType2}); $magpie.addExpData({RussianCountry: $magpie.measurements.RussianCountry}); 
             $magpie.addExpData({RussianCountry2: $magpie.measurements.RussianCountry2}); $magpie.addExpData({Handedness: $magpie.measurements.Handedness}); $magpie.nextScreen()">
 
-            Start practice
+          Начать практику
           </button>
           
           </div>
@@ -202,7 +182,7 @@
             </div>
           </template>
           <button v-if="showFirstDiv" style= "bottom:50%; transform: translate(-50%, -50%)" @click="trial.question !== null ? toggleDivs(): saveAndDisable()" :disabled="!hasRead">
-            {{ trial.question !== null ? 'Next' : 'Next' }}
+            {{ trial.question !== null ? 'Продолжить' : 'Продолжить' }}
           </button>
 
           <div v-else style = "position:absolute; bottom:15%; text-align: center; width: 100%; min-width: -webkit-fill-available;" >
@@ -220,7 +200,7 @@
           </div>
           
           <button v-if="$magpie.measurements.response" style="transform: translate(-50%, -50%)" @click="toggleDivs(); $magpie.saveAndNextScreen()">
-            Next
+            Продолжить
           </button>
         </Slide>
       </Screen>
@@ -232,8 +212,8 @@
         <a href="javascript:void(0)" @click="turnOnFullScreen">Fullscreen Mode</a>
       </p>
  -->
-      <p>Practice session ended! You can now start the main study. </p> 
-      <p>Please click the button below to start the study.</p>
+      <p>Вы закончили тренировку! Теперь можно перейти к основному исследованию.</p> 
+      <p>Пожалуйста, нажмите кнопку ниже, чтобы начать.</p>
     </InstructionScreen>
 
 
@@ -260,7 +240,7 @@
             </div>
           </template>
           <button v-if="showFirstDiv" style= "bottom:50%; transform: translate(-50%, -50%)" @click="trial.question !== null ? toggleDivs(): saveAndDisable()" :disabled="!hasRead">
-            {{ trial.question !== null ? 'Next' : 'Next' }}
+            {{ trial.question !== null ? 'Продолжить' : 'Продолжить' }}
           </button>
 
           <div v-else style = "position:absolute; bottom:15%; text-align: center; width: 100%; min-width: -webkit-fill-available;" >
@@ -278,7 +258,7 @@
           </div>
           
           <button v-if="$magpie.measurements.response" style="transform: translate(-50%, -50%)" @click="toggleDivs(); $magpie.saveAndNextScreen()">
-            Next
+            Продолжить
           </button>
         </Slide>
       </Screen>
