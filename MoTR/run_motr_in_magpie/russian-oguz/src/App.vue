@@ -269,11 +269,11 @@ zfuchs@usc.edu. С вопросами о ваших правах как учас
 
 <script>
 // Load data from csv files as javascript arrays with objects
-import russ_list1 from '../trials/Russ_MoTR_List1.csv';
-import russ_list2 from '../trials/Russ_MoTR_List2.csv';
-import russ_list3 from '../trials/Russ_MoTR_List3.csv';
-import russ_list4 from '../trials/Russ_MoTR_List4.csv';
-import russ_practice from '../trials/Russ_MoTR_List_Practice.csv';
+import russ_list1 from '../trials/Russ_MoTR_List1.tsv';
+import russ_list2 from '../trials/Russ_MoTR_List2.tsv';
+import russ_list3 from '../trials/Russ_MoTR_List3.tsv';
+import russ_list4 from '../trials/Russ_MoTR_List4.tsv';
+import russ_practice from '../trials/Russ_MoTR_List_Practice.tsv';
 
 import _ from 'lodash';
 export default {
