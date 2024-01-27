@@ -262,9 +262,8 @@ zfuchs@usc.edu. С вопросами о ваших правах как учас
           </button>
         </Slide>
       </Screen>
-      <SubmitResultsScreen />
     </template>
-    <!-- <SubmitResultsScreen /> -->
+    <SubmitResultsScreen />
   </Experiment>
 </template>
 
