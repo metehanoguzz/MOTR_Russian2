@@ -4,7 +4,6 @@
 <template>
   <!-- disabled translation -->
   <Experiment title="Russian MoTR Study" translate="no">
-    <!-- Why TA -->
     <Screen :title="'Добро пожаловать'" class="instructions" :validations="{
         SubjectID: {
           minLength: $magpie.v.minLength(2)
@@ -18,31 +17,28 @@
           </div>
           <p>
             Здравствуйте! Меня зовут Зузанна Фукс, я профессор Университета Южной Калифорнии в Лос-Анджелесе. 
-          <br><br>
-          В круг моих исследований входит изучение того, как люди читают по-русски. Конкретное исследование, в котором, как я надеюсь, вы согласитесь поучаствовать, называется «Вопросы русского согласования».
-          <br><br>
-          Ваше участие в этом исследование носит добровольный характер, и в любой момент работы я буду рада вашим вопросам или уточнениям.
-          <br><br>
-          Вы можете стать участником исследования, если вы отвечаете следующим критериям:
-          <br><br>
-          1.	Вы выросли в России и жили там первые 18 лет вашей жизни.<br>
-          2.	Если вы сейчас находитесь за пределами России, вы выехали оттуда после 2021 г.<br>
-          3.	Вам от 18 до 35 лет. 
-<br><br>
-          Если вы согласитесь принять участие в исследовании, вам нужно будет в течение 10-12 минут читать по-русски и отвечать на вопросы по чтению.
-          <br><br>
-          По завершении теста вы получите компенсацию в сумме 4 долларов США на платформе Prolific.
-          <br><br>
-          Результаты исследования будут докладываться на научных конференциях и включаться в журнальные публикации. Ваши личные данные нигде не будут указаны. Конфиденциальность ваших личных данных будет строго соблюдаться, и до публикации или докладов они будут анонимизированы. Анонимизированные данные могут в дальнейшем быть использованы и другими учеными.   
-          <br><br>
-          Если у вас есть вопросы по исследованию, пожалуйста, свяжитесь со мной по электронной почте:
-zfuchs@usc.edu. С вопросами о ваших правах как участника экспериментов, вы также можете обратиться в Комитет по этике Университета Южной Калифорнии: (323) 442-0114 (тел.), hrpp@usc.edu (эл. почта). 
-<br>
+            <br><br>
+            В круг моих исследований входит изучение того, как люди читают по-русски. Конкретное исследование, в котором, как я надеюсь, вы согласитесь поучаствовать, называется «Вопросы русского согласования».
+            <br><br>
+            Ваше участие в этом исследование носит добровольный характер, и в любой момент работы я буду рада вашим вопросам или уточнениям.
+            <br><br>
+            Вы можете стать участником исследования, если вы отвечаете следующим критериям:
+            <br><br>
+            1.	Вы выросли в России и жили там первые 18 лет вашей жизни.<br>
+            2.	Если вы сейчас находитесь за пределами России, вы выехали оттуда после 2021 г.<br>
+            3.	Вам от 18 до 35 лет. 
+            <br><br>
+            Если вы согласитесь принять участие в исследовании, вам нужно будет в течение 10-12 минут читать по-русски и отвечать на вопросы по чтению.
+            <br><br>
+            По завершении теста вы получите компенсацию в сумме 4 долларов США на платформе Prolific.
+            <br><br>
+            Результаты исследования будут докладываться на научных конференциях и включаться в журнальные публикации. Ваши личные данные нигде не будут указаны. Конфиденциальность ваших личных данных будет строго соблюдаться, и до публикации или докладов они будут анонимизированы. Анонимизированные данные могут в дальнейшем быть использованы и другими учеными.   
+            <br><br>
+            Если у вас есть вопросы по исследованию, пожалуйста, свяжитесь со мной по электронной почте:
+            zfuchs@usc.edu. С вопросами о ваших правах как участника экспериментов, вы также можете обратиться в Комитет по этике Университета Южной Калифорнии: (323) 442-0114 (тел.), hrpp@usc.edu (эл. почта). 
+            <br>
           </p>
-
           <br>
-
-      
         </div>
         <tr>
           <!-- Explain TurkID -->
@@ -62,101 +58,22 @@ zfuchs@usc.edu. С вопросами о ваших правах как учас
         </div>
     </Screen>
 
-    <Screen :title="'Инструкции и демографическая информация'" class="instructions" :validations="{
-        SubjectID: {
-          minLength: $magpie.v.minLength(1)
-        }
-      }">
-        <!-- <WelcomeScreen /> -->
+    <Screen class="instructions">
         <div style="width: 40em; margin: auto;">
-
-        <div style="background-color: lightgrey; padding: 10px;">
-            <b>Инструкции</b>
-        </div>
-        <p>В этом исследовании вы будете читать короткие тексты и отвечать на вопросы по ним. Однако, в отличие от обычного чтения, тексты будут размыты. 
-          Чтобы сделать текст четким, наведите на него курсор мышки. Уделите чтению текста столько времени, сколько вам необходимо для его понимания. 
-          Когда вы закончите читать текст, ответьте на вопрос, расположенный внизу экрана, и нажмите «Далее», чтобы продолжить.</p>   
-        
-        <p>Чтобы привыкнуть к тому, как устроено исследование, перед началом основного исследования вы выполните несколько тренировочных заданий.</p> 
-       
-        <br>
-        <div style="background-color: lightgrey; padding: 10px;">
-            <b> Демографическая игформация </b>
-        </div>
-        <p>
-          Прежде чем начать, мы хотели бы немного узнать о вас. Пожалуйста, ответьте на вопросы ниже, а затем нажмите кнопку, чтобы начать тренировку.
-        <br>
-        </p>
-          <!-- <td>I currently live in a Russian-speaking country.</td>
-          <td><input type="radio" id = "yes" value="Yes" v-model="$magpie.measurements.MouseType"> Yes</input> </td>
-          <td><input type="radio" id = "no" value="No" v-model="$magpie.measurements.MouseType"> No</input></td>  
-          </tr> -->
-          <div>
-          <tr>
-          Мне _____ лет.  
-          <input name="Age" type="number" inputmode="numeric" min = "18" class="obligatory" v-model="$magpie.measurements.Age"/><span class="validity"></span>
-          </tr>
+          <div style="background-color: lightgrey; padding: 10px;">
+              <b>Инструкции</b>
           </div>
-          
-          <tr>
-            В данный момент я живу в русскоговорящей стране. &nbsp
-          <select v-model="$magpie.measurements.RussianCountry"> 
-            <option disabled value=""></option>
-            <option>Да</option>
-            <option>Нет</option>
-         </select>
-          </tr>
-          </div>
-          <div v-if="
-            $magpie.measurements.RussianCountry == 'Нет'
-            ">      
-            <td>Как долго вы проживаете в нерусскоязычной стране? &nbsp </td><td><input name="RussianCountry2" type="text" class="obligatory" v-model="$magpie.measurements.RussianCountry2"/></td>
-          </div>
-          <div>
-          <tr>
-            Я использую _____. &nbsp
-          <select v-model="$magpie.measurements.MouseType"> 
-            <option disabled value=""></option>
-            <option>Компьютерную мышку</option>
-            <option>Трекпад</option>
-            <option>другое</option> 
-         </select>
-         </tr>
-          </div>
-          <div v-if="
-            $magpie.measurements.MouseType == 'другое'
-            ">      
-            <td>Если вы указали другое, пожалуйста уточните: &nbsp &nbsp</td><td><input name="MouseType2" type="text" class="obligatory" v-model="$magpie.measurements.MouseType2"/></td>
-          </div>
-          
-          <div>
-            <tr>
-              Я _____. &nbsp
-          <select v-model="$magpie.measurements.Handedness"> 
-            <option disabled value=""></option>
-            <option>Левша</option>
-            <option>Правша</option>
-            <option>Амбидекстр</option>
-         </select>
-            </tr>
-          </div>
-         <div v-if="
-            $magpie.measurements.Age&&
-            $magpie.measurements.MouseType&&
-            $magpie.measurements.RussianCountry&&
-            $magpie.measurements.Handedness
-            ">
           <br>
-          <br />
-          <button 
-            @click=" $magpie.addExpData({Age: $magpie.measurements.Age}); $magpie.addExpData({MouseType: $magpie.measurements.MouseType}); 
-            $magpie.addExpData({MouseType2: $magpie.measurements.MouseType2}); $magpie.addExpData({RussianCountry: $magpie.measurements.RussianCountry}); 
-            $magpie.addExpData({RussianCountry2: $magpie.measurements.RussianCountry2}); $magpie.addExpData({Handedness: $magpie.measurements.Handedness}); $magpie.nextScreen()">
-
-          Начать практику
-          </button>
+          <p>В этом исследовании вы будете читать короткие тексты и отвечать на вопросы по ним. Однако, в отличие от обычного чтения, тексты будут размыты. 
+            Чтобы сделать текст четким, наведите на него курсор мышки. Уделите чтению текста столько времени, сколько вам необходимо для его понимания. 
+            Когда вы закончите читать текст, ответьте на вопрос, расположенный внизу экрана, и нажмите «Далее», чтобы продолжить.</p>   
           
-          </div>
+          <p>Чтобы привыкнуть к тому, как устроено исследование, перед началом основного исследования вы выполните несколько тренировочных заданий.</p> 
+          <br>
+       </div>
+      <button style="transform: translate(-50%, -50%)" @click="$magpie.nextScreen()">
+        Начать практику
+      </button>
     </Screen>
 
     <template v-for="(trial, i) of practice_trials">
@@ -207,15 +124,12 @@ zfuchs@usc.edu. С вопросами о ваших правах как учас
     </template>
     
     <Screen :title="'Практика закончена'" class="instructions">
-
       <p>Вы закончили тренировку! Теперь можно перейти к основному исследованию.</p> 
       <p>Пожалуйста, нажмите кнопку ниже, чтобы начать.</p>
-      <button 
-            @click=" $magpie.nextScreen()">
+      <button style="transform: translate(-50%, -50%)" @click=" $magpie.nextScreen()">
             Продолжить
-          </button>
+      </button>
     </Screen>
-
 
     <template v-for="(trial, i) of trials">
       <Screen :key="i" class="main_screen" :progress="i / trials.length">
@@ -262,17 +176,52 @@ zfuchs@usc.edu. С вопросами о ваших правах как учас
           </button>
         </Slide>
       </Screen>
+
     </template>
+
+    <Screen style="min-height: 700px;">
+      <div style="background-color: lightgrey; padding: 10px; width: 650px;">
+            <b> демографическая информация </b>
+      </div>
+    
+      <p>1. В данный момент я живу в русскоговорящей стране. &nbsp</p>
+      <MultipleChoiceInput
+          :response.sync= "$magpie.measurements.russianCountry"
+          orientation="horizontal"
+          :options="['Да', 'Нет']" />
+      <p v-if = "$magpie.measurements.russianCountry == 'Нет'"> Как долго вы проживаете в нерусскоязычной стране? &nbsp </p>
+      <TextareaInput v-if = "$magpie.measurements.russianCountry == 'Нет'"
+            :response.sync= "$magpie.measurements.russianCountry2"
+      />
+      <br>
+      <p>2. Я использую _____.</p>
+        <MultipleChoiceInput
+            :response.sync= "$magpie.measurements.device"
+            orientation="horizontal"
+            :options="['Компьютерную мышку', 'Трекпад', 'другое' ]" />
+        <p v-if = "$magpie.measurements.device == 'другое'">Если вы указали другое, пожалуйста уточните: &nbsp &nbsp</p>
+        <TextareaInput v-if = "$magpie.measurements.device == 'другое'"
+              :response.sync= "$magpie.measurements.otherDevice"
+        />
+        <br>
+      <p>3. Я _____. &nbsp</p>
+        <MultipleChoiceInput
+            :response.sync= "$magpie.measurements.hand"
+            orientation="horizontal"
+            :options="['Левша', 'Правша', 'Амбидекстр']" />
+      <button style= "bottom:0%; transform: translate(-50%, -50%)" @click="$magpie.saveAndNextScreen();">Submit</button>
+    </Screen>
+
     <SubmitResultsScreen />
   </Experiment>
 </template>
 
 <script>
 // Load data from csv files as javascript arrays with objects
-import russ_list1 from '../trials/Russ_MoTR_List_Practice.tsv';
-import russ_list2 from '../trials/Russ_MoTR_List_Practice.tsv';
-import russ_list3 from '../trials/Russ_MoTR_List_Practice.tsv';
-import russ_list4 from '../trials/Russ_MoTR_List_Practice.tsv';
+import russ_list1 from '../trials/Russ_MoTR_List1.tsv';
+import russ_list2 from '../trials/Russ_MoTR_List2.tsv';
+import russ_list3 from '../trials/Russ_MoTR_List3.tsv';
+import russ_list4 from '../trials/Russ_MoTR_List4.tsv';
 import russ_practice from '../trials/Russ_MoTR_List_Practice.tsv';
 
 import _ from 'lodash';
@@ -487,9 +436,9 @@ export default {
   }
 
   * {
-    user-select: none; /* Standard syntax */
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
     }
 </style>
