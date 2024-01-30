@@ -1,4 +1,4 @@
-list_id	part	item_id	condition	type	type_id	target_gender	gender_match	orig_item_number	case	animacy	R1	R2	R3	R4	R5	R6	text	question	response_true	response_distractors
+list	part	item_id	condition	type	type_id	target_gender	gender_match	orig_item_number	case	animacy	R1	R2	R3	R4	R5	R6	text	question	response_true	response_distractors
 3	adjectives	4	d	stim_adj	1	M	Mis	0	0	Inanim	У бабушки	старая	пылесос	уже год	плохо	работает	У бабушки старая пылесос уже год плохо работает.	Хорошо ли работает у бабушки техника? 	нет	да
 3	adjectives	5	a	stim_adj	1	M	Match	0	0	Inanim	На стене 	рваный	плакат	давно	еле-еле	держится	На стене  рваный плакат давно еле-еле держится.	Все ли в порядке на стене?	нет	да
 3	adjectives	6	b	stim_adj	1	F	Mis	0	0	Inanim	В комнате	странный	сумка	в углу	привлекает	внимание	В комнате странный сумка в углу привлекает внимание.	Лежит ли странный предмет в центре комнаты?	нет	да
