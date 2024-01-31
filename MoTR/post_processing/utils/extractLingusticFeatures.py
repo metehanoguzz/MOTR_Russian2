@@ -32,13 +32,13 @@ class FeatureExtractor:
         """
         # input_df_f_grouped = self.input_df_ff.groupby(['para_nr', 'word_nr'])
         # input_df_f_grouped = self.input_df_ff.groupby(['expr_id', 'para_nr', 'word_nr'])
-        input_df_f_grouped = self.input_df_ff.groupby(['cond_id', 'para_nr', 'word_nr'])
+        input_df_f_grouped = self.input_df_ff.groupby(['cond_id', 'item_id', 'word_nr'])
         first_fixation_values = input_df_f_grouped['duration'].first()
         first_fixation_df = pd.DataFrame(first_fixation_values).reset_index()
         first_fixation_df = first_fixation_df.rename(columns={'duration': 'first_duration'})
         # self.output_df = self.output_df.merge(first_fixation_df, on=['para_nr', 'word_nr'], how='left')
         # self.output_df = self.output_df.merge(first_fixation_df, on=['expr_id', 'para_nr', 'word_nr'], how='left')
-        self.output_df = self.output_df.merge(first_fixation_df, on=['cond_id', 'para_nr', 'word_nr'], how='left')
+        self.output_df = self.output_df.merge(first_fixation_df, on=['cond_id', 'item_id', 'word_nr'], how='left')
         self.output_df['first_duration'] = self.output_df['first_duration'].fillna(0)
 
     def get_total_duration(self):
@@ -47,13 +47,13 @@ class FeatureExtractor:
         """
         # input_df_f_grouped = self.input_df_ff.groupby(['para_nr', 'word_nr'])
         # input_df_f_grouped = self.input_df_ff.groupby(['expr_id', 'para_nr', 'word_nr'])
-        input_df_f_grouped = self.input_df_ff.groupby(['cond_id', 'para_nr', 'word_nr'])
+        input_df_f_grouped = self.input_df_ff.groupby(['cond_id', 'item_id', 'word_nr'])
         total_duration_values = input_df_f_grouped['duration'].sum()
         total_duration_df = pd.DataFrame(total_duration_values).reset_index()
         total_duration_df = total_duration_df.rename(columns={'duration': 'total_duration'})
         # self.output_df = self.output_df.merge(total_duration_df, on=['para_nr', 'word_nr'], how='left')
         # self.output_df = self.output_df.merge(total_duration_df, on=['expr_id', 'para_nr', 'word_nr'], how='left')
-        self.output_df = self.output_df.merge(total_duration_df, on=['cond_id', 'para_nr', 'word_nr'], how='left')
+        self.output_df = self.output_df.merge(total_duration_df, on=['cond_id', 'item_id', 'word_nr'], how='left')
         self.output_df['total_duration'] = self.output_df['total_duration'].fillna(0)
 
     # gaze duration equals to first-pass reading time: sum of the durations of all first-pass fixations on a word
@@ -63,7 +63,7 @@ class FeatureExtractor:
         gaze_duration_dict = defaultdict(int)
         # input_df_ff_grouped = self.input_df_ff.groupby(['para_nr'])
         # input_df_ff_grouped = self.input_df_ff.groupby(['expr_id', 'para_nr'])
-        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'para_nr'])
+        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'item_id'])
         gaze_duration_df = pd.DataFrame()
         for name, group in input_df_ff_grouped:
             for i in group.index:
@@ -75,14 +75,14 @@ class FeatureExtractor:
                  # 'para_nr': name,
                  # 'expr_id': name[0],
                  'cond_id': name[0],
-                 'para_nr': name[1],
+                 'item_id': name[1],
                  'word_nr': gaze_duration_dict.keys(),
                  'gaze_duration': gaze_duration_dict.values()}).sort_values(by='word_nr')
             gaze_duration_df = pd.concat([gaze_duration_df, gaze_duration], ignore_index=True)
             gaze_duration_dict.clear()
         # self.output_df = self.output_df.merge(gaze_duration_df, on=['para_nr', 'word_nr'], how='left')
         # self.output_df = self.output_df.merge(gaze_duration_df, on=['expr_id', 'para_nr', 'word_nr'], how='left')
-        self.output_df = self.output_df.merge(gaze_duration_df, on=['cond_id', 'para_nr', 'word_nr'], how='left')
+        self.output_df = self.output_df.merge(gaze_duration_df, on=['cond_id', 'item_id', 'word_nr'], how='left')
         self.output_df['gaze_duration'] = self.output_df['gaze_duration'].fillna(0)
 
     # sum of all first pass fixation durations on a word until a word to the right of this word is fixated
@@ -91,7 +91,7 @@ class FeatureExtractor:
         rrt_dict = defaultdict(int)
         # input_df_ff_grouped = self.input_df_ff.groupby(['para_nr'])
         # input_df_ff_grouped = self.input_df_ff.groupby(['expr_id', 'para_nr'])
-        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'para_nr'])
+        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'item_id'])
         rrt_df = pd.DataFrame()
         for name, group in input_df_ff_grouped:
             for i in group.index:
@@ -102,7 +102,7 @@ class FeatureExtractor:
                  # 'para_nr': name,
                  # 'expr_id': name[0],
                  'cond_id': name[0],
-                 'para_nr': name[1],
+                 'item_id': name[1],
                  'word_nr': rrt_dict.keys(),
                  'right_bounded_rt': rrt_dict.values()}).sort_values(by='word_nr')
             rrt_df = pd.concat([rrt_df, rrt], ignore_index=True)
@@ -110,7 +110,7 @@ class FeatureExtractor:
             rrt_dict.clear()
         # self.output_df = self.output_df.merge(rrt_df, on=['para_nr', 'word_nr'], how='left')
         # self.output_df = self.output_df.merge(rrt_df, on=['expr_id', 'para_nr', 'word_nr'], how='left')
-        self.output_df = self.output_df.merge(rrt_df, on=['cond_id', 'para_nr', 'word_nr'], how='left')
+        self.output_df = self.output_df.merge(rrt_df, on=['cond_id', 'item_id', 'word_nr'], how='left')
         self.output_df['right_bounded_rt'] = self.output_df['right_bounded_rt'].fillna(0)
 
     #  sum of all fixation durations starting from the first first-pass fixation on a word until fixation a word to the
@@ -120,7 +120,7 @@ class FeatureExtractor:
         gpt_dict = defaultdict(int)
         # input_df_ff_grouped = self.input_df_ff.groupby(['para_nr'])
         # input_df_ff_grouped = self.input_df_ff.groupby(['expr_id', 'para_nr'])
-        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'para_nr'])
+        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'item_id'])
         gpt_df = pd.DataFrame()
         for name, group in input_df_ff_grouped:
             for i in group.index:
@@ -136,14 +136,14 @@ class FeatureExtractor:
                  # 'para_nr': name,
                  # 'expr_id': name[0],
                  'cond_id': name[0],
-                 'para_nr': name[1],
+                 'item_id': name[1],
                  'word_nr': gpt_dict.keys(),
                  'go_past_time': gpt_dict.values()}).sort_values(by='word_nr')
             gpt_df = pd.concat([gpt_df, gpt], ignore_index=True)
             gpt_dict.clear()
         # self.output_df = self.output_df.merge(gpt_df, on=['para_nr', 'word_nr'], how='left')
         # self.output_df = self.output_df.merge(gpt_df, on=['expr_id', 'para_nr', 'word_nr'], how='left')
-        self.output_df = self.output_df.merge(gpt_df, on=['cond_id', 'para_nr', 'word_nr'], how='left')
+        self.output_df = self.output_df.merge(gpt_df, on=['cond_id', 'item_id', 'word_nr'], how='left')
         self.output_df['go_past_time'] = self.output_df['go_past_time'].fillna(0)
 
     def check_comprehension_answer(self):
@@ -152,26 +152,29 @@ class FeatureExtractor:
         """
         # input_df_ff_grouped = self.input_df_ff.groupby(['para_nr', 'word_nr'])
         # input_df_ff_grouped = self.input_df_ff.groupby(['expr_id', 'para_nr', 'word_nr'])
-        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'para_nr', 'word_nr'])
+        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'item_id', 'word_nr'])
         solution_to_check = input_df_ff_grouped['response'].first()
         solution_df = pd.DataFrame(solution_to_check).reset_index()
         solution_df = solution_df.rename(columns={'response': 'response_chosen'})
         # self.output_df = self.output_df.merge(solution_df, on=['para_nr', 'word_nr'], how='left')
         # self.output_df = self.output_df.merge(solution_df, on=['expr_id', 'para_nr', 'word_nr'], how='left')
-        self.output_df = self.output_df.merge(solution_df, on=['cond_id', 'para_nr', 'word_nr'], how='left')
+        self.output_df = self.output_df.merge(solution_df, on=['cond_id', 'item_id', 'word_nr'], how='left')
         # solution_to_fill = self.output_df.groupby(['para_nr'])['response_chosen'].first()
         # solution_to_fill = self.output_df.groupby(['expr_id', 'para_nr'])['response_chosen'].first()
-        solution_to_fill = self.output_df.groupby(['cond_id', 'para_nr'])['response_chosen'].first()
+        solution_to_fill = self.output_df.groupby(['cond_id', 'item_id'])['response_chosen'].first()
         solution_to_fill_df = pd.DataFrame(solution_to_fill).reset_index()
         # self.output_df = self.output_df.drop(columns='response_chosen').merge(solution_to_fill_df,
         #                                                                       on=['para_nr'], how='left')
         # self.output_df = self.output_df.drop(columns='response_chosen').merge(solution_to_fill_df,
         #                                                                       on=['expr_id', 'para_nr'], how='left')
         self.output_df = self.output_df.drop(columns='response_chosen').merge(solution_to_fill_df,
-                                                                              on=['cond_id', 'para_nr'], how='left')
+                                                                              on=['cond_id', 'item_id'], how='left')
         self.output_df['response_chosen'] = self.output_df['response_chosen'].fillna('--')
         self.output_df['correctness'] = self.output_df.apply(
-            lambda x: 1 if x['response_chosen'] in x['response_true'] else 0, axis=1)
+            lambda x: 1 if not pd.isna(x['response_true']) and x['response_chosen'].strip() in str(x['response_true']).strip()
+            else (99 if x['response_chosen'] == "%2c#" or pd.isna(x['response_true'])
+                  else 0),
+            axis=1)
 
     def get_binary(self):
         """
@@ -182,7 +185,7 @@ class FeatureExtractor:
         FPReg_dict = defaultdict(int)
         # input_df_ff_grouped = self.input_df_ff.groupby(['para_nr'])
         # input_df_ff_grouped = self.input_df_ff.groupby(['expr_id', 'para_nr'])
-        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'para_nr'])
+        input_df_ff_grouped = self.input_df_ff.groupby(['cond_id', 'item_id'])
         binary_df = pd.DataFrame()
         for name, group in input_df_ff_grouped:
             for i in group.index:
@@ -198,7 +201,7 @@ class FeatureExtractor:
                  # 'para_nr': name,
                  # 'expr_id': name[0],
                  'cond_id': name[0],
-                 'para_nr': name[1],
+                 'item_id': name[1],
                  'word_nr': FPFix_dict.keys(),
                  'FPFix': FPFix_dict.values()}).sort_values(by='word_nr')
             FPReg = pd.DataFrame(
@@ -206,19 +209,19 @@ class FeatureExtractor:
                  # 'para_nr': name,
                  # 'expr_id': name[0],
                  'cond_id': name[0],
-                 'para_nr': name[1],
+                 'item_id': name[1],
                  'word_nr': FPReg_dict.keys(),
                  'FPReg': FPReg_dict.values()}).sort_values(by='word_nr')
             # FPFix = FPFix.merge(FPReg, on=['para_nr', 'word_nr'], how='left')
             # FPFix = FPFix.merge(FPReg, on=['expr_id', 'para_nr', 'word_nr'], how='left')
-            FPFix = FPFix.merge(FPReg, on=['cond_id', 'para_nr', 'word_nr'], how='left')
+            FPFix = FPFix.merge(FPReg, on=['cond_id', 'item_id', 'word_nr'], how='left')
             binary_df = pd.concat([binary_df, FPFix], ignore_index=True)
             # binary_df = pd.concat([binary_df, FPReg], ignore_index=True)
             FPFix_dict.clear()
             FPReg_dict.clear()
         # self.output_df = self.output_df.merge(binary_df, on=['para_nr', 'word_nr'], how='left')
         # self.output_df = self.output_df.merge(binary_df, on=['expr_id', 'para_nr', 'word_nr'], how='left')
-        self.output_df = self.output_df.merge(binary_df, on=['cond_id', 'para_nr', 'word_nr'], how='left')
+        self.output_df = self.output_df.merge(binary_df, on=['cond_id', 'item_id', 'word_nr'], how='left')
         self.output_df['FPFix'] = self.output_df['FPFix'].fillna(0).astype(int)
         self.output_df['FPReg'] = self.output_df['FPReg'].fillna(0).astype(int)
 

@@ -30,11 +30,12 @@ class FixationMerger:
         """
         with open(self.in_data_path, 'r') as csvfile:
             csvreader = csv.DictReader(csvfile)
-            mouse_data = [{'sbm_id': str(row['submission_id']),
-                           'expr_id': int(row['Experiment']), 'cond_id': int(row['Condition']),
-                           'para_nr': int(row['ItemId']),
+            mouse_data = [{'sbm_id': str(row['submission_id']), 'list_id': int(row['List']),
+                           'type_id': int(row['Type']), 'cond_id': str(row['Condition']),
+                           'item_id': int(row['ItemId']), 'trial_id': int(row['trial_id']),
                            'word_nr': int(row['Index']), 'word': str(row['Word']), 't': int(row['responseTime']),
                            'x': int(row['mousePositionX']), 'y': int(row['mousePositionY']),
+
                            # 'wb': str(row['wordPositionBottom']), 'wt': str(row['wordPositionTop']),
                            # 'wl': str(row['wordPositionLeft']), 'wr': str(row['wordPositionRight']),
                            'response': str(row['response'])} for row in csvreader]
@@ -48,7 +49,7 @@ class FixationMerger:
         x_coordinates = []
         y_coordinates = []
         for i in range(len(self.mouse_data)-1):
-            if self.mouse_data[i+1]['para_nr'] == self.mouse_data[i]['para_nr']:
+            if self.mouse_data[i+1]['item_id'] == self.mouse_data[i]['item_id']:
                 if self.mouse_data[i+1]['word_nr'] == self.mouse_data[i]['word_nr']:
                     self.mouse_data[i+1]['t'] = self.mouse_data[i]['t']
                     x_coordinates.append(self.mouse_data[i]['x'])
@@ -59,9 +60,9 @@ class FixationMerger:
                     x_coordinates.append(self.mouse_data[i]['x'])
                     y_coordinates.append(self.mouse_data[i]['y'])
                     merged_fixation_on_word = {
-                        'sbm_id': self.mouse_data[i]['sbm_id'],
-                        'expr_id': self.mouse_data[i]['expr_id'], 'cond_id': self.mouse_data[i]['cond_id'],
-                        'para_nr': self.mouse_data[i]['para_nr'],
+                        'sbm_id': self.mouse_data[i]['sbm_id'], 'list_id': self.mouse_data[i]['list_id'],
+                        'type_id': self.mouse_data[i]['type_id'], 'cond_id': self.mouse_data[i]['cond_id'],
+                        'item_id': self.mouse_data[i]['item_id'], 'trial_id': self.mouse_data[i]['trial_id'],
                         'word_nr': self.mouse_data[i]['word_nr'], 'word': self.mouse_data[i]['word'],
                         'duration': fixed_time, 'start_t': self.mouse_data[i]['t'], 'end_t': self.mouse_data[i+1]['t'],
                         'x_mean': round(mean(x_coordinates), 2), 'y_mean': round(mean(y_coordinates), 2),
@@ -92,7 +93,7 @@ class FixationMerger:
 
     def sort_fixations_by_itemid(self) -> None:
         #self.fixations = sorted(self.fixations, key=lambda x: (x[0]['expr_id'], x[0]['para_nr']))
-        self.fixations = sorted(self.fixations, key=lambda x: x[0]['para_nr'] if x else float('inf'))
+        self.fixations = sorted(self.fixations, key=lambda x: x[0]['item_id'] if x else float('inf'))
 
     def _clear_noises_before_reading(self):
         for i in range(len(self.fixations)):
@@ -106,7 +107,7 @@ class FixationMerger:
         with open(f'{self.out_data_path}/{self.out_data_merged_denoise_name}', 'w', newline='') as out_csvfile:
 
             # to avoid errors given by mess data, we manually type fieldnames here later.
-            fieldnames = ['sbm_id', 'expr_id', 'cond_id', 'para_nr', 'word_nr', 'word', 'duration', 'start_t', 'end_t',
+            fieldnames = ['sbm_id', 'list_id', 'type_id', 'cond_id', 'item_id', 'trial_id', 'word_nr', 'word', 'duration', 'start_t', 'end_t',
                           'x_mean', 'y_mean', 'response']
             # fieldnames = ['sbm_id', 'expr_id', 'cond_id', 'para_nr', 'word_nr', 'word', 'duration', 'start_t', 'end_t',
             #               'x_mean', 'y_mean', 'wb', 'wt', 'wl', 'wr', 'response']
